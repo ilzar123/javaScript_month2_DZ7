@@ -7,7 +7,7 @@ document.querySelector('.addBtn').onclick = function () {
                     <span class="taskName">${document.querySelector('input').value}</span>
                     <button class="delete">x</button>   
             </div>`)
-        document.querySelector('input').value=''
+        document.querySelector('input').value = ''
         ////////delete task////////
         let current_task = document.querySelectorAll('.delete');
         for (let i = 0; i < current_task.length; i++) {
@@ -31,32 +31,57 @@ document.querySelector('.addBtn').onclick = function () {
 
 
 //2)задание
-const a = Number(prompt('введите первое число'))
-const num = prompt('введите математическое значение')
-const b = Number(prompt('введите второе число'))
-let result = 'result'
-const culc = (a, num, b, result) => {
-    switch (num){
+let calculator;
+function func() {
+    let result;
+    let num1 = Number(document.getElementById("num1").value);
+    let num2 = Number(document.getElementById("num2").value);
+    switch (calculator) {
         case '+':
-           alert (result = a + b)
-            break
+            result = num1 + num2;
+            break;
         case '-':
-           alert (result = a - b)
-            break
+            result = num1 - num2;
+            break;
         case '*':
-           alert (result = a * b)
-            break
+            result = num1 * num2;
+            break;
         case '/':
-            if (b === 0){
-                alert('на ноль делить нельзя')
+            if(num2 === 0) {
+                alert('на ноль не делится')
                 break
             }
-           alert (result = a / b)
-            break
+            result = num1 / num2;
+            break;
         default:
             alert('error')
-            break
     }
+    const rez = document.getElementById('result')
+    rez.innerText = result
+
 }
 
-culc(a, num, b, result)
+const plus = document.getElementById('plus')
+plus.onclick = () => {
+    calculator = '+'
+}
+
+const minus = document.getElementById('minus')
+minus.onclick = () => {
+    calculator = '-'
+}
+
+const umn = document.getElementById('multiplication')
+umn.onclick = () => {
+    calculator = '*'
+}
+
+const del = document.getElementById('divided')
+del.onclick = () => {
+    calculator = '/'
+}
+
+const btn = document.querySelector('.btn')
+btn.onclick = () => {
+    func()
+}
